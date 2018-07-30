@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FileUploadControl;
 using KahvelerMezundanBooking.Data;
+using KahvelerMezundanBooking.Models;
+using KahvelerMezundanBooking.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KahvelerMezundanBooking.Controllers
@@ -26,6 +29,35 @@ namespace KahvelerMezundanBooking.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(List<IFormFile> files, MezunDetailViewmodel vmodel, MezunDetails mezun)
+        {
+            mezun.Mezun_Name = vmodel.Name;
+            mezun.Mezun_Description = vmodel.Description;
+            mezun.DateAndTime = vmodel.DateofEvent;
+            foreach (var item in files)
+            {
+                mezun.MezunPicture = "/~Uploads/" + item.FileName.Trim();
+            }
+            _upload.uploadfilemultiple(files);
+            _context.MezunDetails.Add(mezun);
+            _context.SaveChanges();
+            TempData["Success"] = "Mezunu Kaydet";
+            return RedirectToAction("Create", "Admin");
+        }
+        [HttpGet]
+        public IActionResult CheckBookSeat()
+        {
+            var GetBookingTable = _context.BookingTable.ToList().OrderByDescending(a => a.Datetopresent);
+            return View(GetBookingTable);
+        }
+        [HttpGet]
+        public IActionResult GetUserDetails()
+        {
+            var getUserTable = _context.Users.ToList();
+            return View(getUserTable);
         }
 
     }
