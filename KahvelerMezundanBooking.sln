@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KahvelerMezundanBooking", "KahvelerMezundanBooking\KahvelerMezundanBooking.csproj", "{DEB06231-EEE6-4FB0-9CCA-5D9754380699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploadControl", "FileUploadControl\FileUploadControl.csproj", "{91E8517C-210B-4BDC-A015-1D605D06139C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEB06231-EEE6-4FB0-9CCA-5D9754380699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB06231-EEE6-4FB0-9CCA-5D9754380699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB06231-EEE6-4FB0-9CCA-5D9754380699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB06231-EEE6-4FB0-9CCA-5D9754380699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E8517C-210B-4BDC-A015-1D605D06139C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E8517C-210B-4BDC-A015-1D605D06139C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E8517C-210B-4BDC-A015-1D605D06139C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E8517C-210B-4BDC-A015-1D605D06139C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBA3D8A1-310F-4538-ABD6-A2A3FD531BC9}
+	EndGlobalSection
+EndGlobal
