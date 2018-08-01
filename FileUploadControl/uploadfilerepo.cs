@@ -11,7 +11,7 @@ namespace FileUploadControl
     public class uploadfilerepo : UploadInterface
     {
         private IHostingEnvironment hostingEnvironment;
-        public uploadfilerepo (IHostingEnvironment hostingEnvironment)
+        public uploadfilerepo(IHostingEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
         }
@@ -22,12 +22,13 @@ namespace FileUploadControl
             {
 
                 string filename = item.FileName.Trim('"');
+                filename = this.EnsureFileName(filename);
                 byte[] buffer = new byte[16 * 1024];
                 using (FileStream output = System.IO.File.Create(this.GetpathAndFileName(filename)))
                 {
                     using (Stream Input = item.OpenReadStream())
                     {
-                        long totalReadBytes = 0;
+                        long totalReadBytes;
                         int readBytes;
                         while ((readBytes = Input.Read(buffer, 0, buffer.Length)) > 0)
                         {
@@ -39,9 +40,17 @@ namespace FileUploadControl
             }
         }
 
+        private string EnsureFileName(string filename)
+        {
+            if (filename.Contains("\\"))
+            filename = filename.Substring(filename.LastIndexOf("\\") + 1);
+            return filename;
+
+        }
+
         private string GetpathAndFileName(string filename)
         {
-            string path = this.hostingEnvironment.WebRootPath + "\\uploads";
+            string path = this.hostingEnvironment.WebRootPath + "\\uploads\\";
             if (!Directory.Exists(path))
 
                 Directory.CreateDirectory(path);

@@ -31,5 +31,7 @@ namespace KahvelerMezundanBooking.Data
         public DbSet<KahvelerMezundanBooking.Models.ViewModels.MezunDetailViewmodel> MezunDetailViewmodel { get; set; }
 
         public DbSet<KahvelerMezundanBooking.Models.ApplicationUser> ApplicationUser { get; set; }
+
+        public DbSet<KahvelerMezundanBooking.Models.ViewModels.BookNowViewModel> BookNowViewModel { get; set; }
     }
 }

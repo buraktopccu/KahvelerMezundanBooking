@@ -1,0 +1,53 @@
+﻿@model KahvelerMezundanBooking.Models.ViewModels.BookNowViewModel
+
+@{
+    ViewData["Title"] = "BookNow";
+}
+
+<h2>BookNow</h2>
+
+<a asp-action="" asp-controller="">Sepeti Kontrol Ediniz!</a>
+<a asp-action="" asp-controller="">Rezervasyon Detayları</a>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BookNow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Mezun_Name" class="control-label"></label>
+                @Model.Mezun_Name
+                <span asp-validation-for="Mezun_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mezun_Date" class="control-label"></label>
+                @Model.Mezun_Date
+                <span asp-validation-for="Mezun_Date" class="text-danger"></span>
+                <input type="submit" asp-action="checkseat" asp-controller="Home" value="CheckSeat" formmethod="post"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatNo" class="control-label"></label>
+                <input asp-for="SeatNo" class="form-control" />
+                <span asp-validation-for="SeatNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MezunId" class="control-label"></label>
+                <input asp-for="MezunId" class="form-control" />
+                <span asp-validation-for="MezunId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sepete Ekle" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @TempData["Success"]
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

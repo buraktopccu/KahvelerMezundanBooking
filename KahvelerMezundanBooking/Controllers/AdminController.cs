@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FileUploadControl;
@@ -34,12 +35,14 @@ namespace KahvelerMezundanBooking.Controllers
         [HttpPost]
         public IActionResult Create(List<IFormFile> files, MezunDetailViewmodel vmodel, MezunDetails mezun)
         {
+            string path = string.Empty;
             mezun.Mezun_Name = vmodel.Name;
             mezun.Mezun_Description = vmodel.Description;
             mezun.DateAndTime = vmodel.DateofEvent;
             foreach (var item in files)
             {
-                mezun.MezunPicture = "/~Uploads/" + item.FileName.Trim();
+                path = Path.GetFileName(item.FileName.Trim());
+                mezun.MezunPicture = "~/uploads/" + path;
             }
             _upload.uploadfilemultiple(files);
             _context.MezunDetails.Add(mezun);
